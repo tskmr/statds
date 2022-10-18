@@ -51,7 +51,7 @@ aov = function(x, y){
              mean.ss = c(mean.ss.reg, mean.ss.sig, NA),
              valueF = c(valueF, NA, NA))
   R2 = (t(estY)%*%estY)/(t(Y)%*%Y)
-  
+
   ad.df.reg = k; ad.df.sig = n-k-1; ad.df.all = n-1
   estY= X%*%beta; eps = Y-estY; bary = mean(y);
   ad.ss.reg = t(estY)%*%estY - n*bary^2; ad.ss.sig = t(eps)%*%eps; ad.ss.all = t(Y)%*%Y - n*bary^2
@@ -63,7 +63,7 @@ aov = function(x, y){
                    mean.ss = c(ad.mean.ss.reg, ad.mean.ss.sig, NA),
                    valueF = c(ad.valueF, NA, NA))
   ad.R2 = (t(estY)%*%estY - n*bary^2)/(t(Y)%*%Y - n*bary^2)
-  
+
   varBeta = XXinv*as.numeric(sigma2)
   rBeta = sapply(1:(k+1), function(i){
     sapply(1:(k+1), function(j){
@@ -71,7 +71,7 @@ aov = function(x, y){
     })})
   seBeta = sqrt(diag(XXinv)*as.numeric(sigma2))
   tBeta = beta/seBeta
-  
+
   return(list(ad.vca=ad.vca, ad.R2=ad.R2, vca=vca, R2=R2, seBeta=seBeta, tBeta=tBeta))
 }
 
@@ -80,21 +80,21 @@ multi.collinearity= function(x){
   # VIF
   # t(rBeta)%*%rBeta
   if(is.null(ncol(x))) return(NULL)
-  x1 = x[, 1]; 
+  x1 = x[, 1];
   x2 = x[,-1]
   r1 = aov(x2, x1)
   VIF = 1/(1-rBeta^2)
 
   return(res)
 }
-
-x1 = c(8, 5, 7, 7, 7, 7, 5)
-x2 = c(29, 4, 9, 18, 54, 7, 8)
-x3 = c(150, 144, 134, 150, 130, 130, 120)
-x4 = c(18, 20, 30, 40, 30, 30, 100)
-x5 = c(49, 24, 39, 58, 84, 37, 108)
-x = matrix(c(x1, x2, x3, x4), ncol=4)
-y = c(7.390, 7.3, 7.215, 7.162, 5.193, 4.654, 2.708)
-
-least.square(x, y)
-aov(x, y)
+#
+# x1 = c(8, 5, 7, 7, 7, 7, 5)
+# x2 = c(29, 4, 9, 18, 54, 7, 8)
+# x3 = c(150, 144, 134, 150, 130, 130, 120)
+# x4 = c(18, 20, 30, 40, 30, 30, 100)
+# x5 = c(49, 24, 39, 58, 84, 37, 108)
+# x = matrix(c(x1, x2, x3, x4), ncol=4)
+# y = c(7.390, 7.3, 7.215, 7.162, 5.193, 4.654, 2.708)
+#
+# least.square(x, y)
+# aov(x, y)
