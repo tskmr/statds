@@ -8,7 +8,7 @@ setup = function(){
   rstan_options(javascript = FALSE)
   if(!require(lubridate)) install.packages("lubridate"); library(lubridate)
   if(!require(ggridges)) install.packages("ggridges"); library(ggridges)
-
+  if(!require(directlabels)) install.packages("directlabels"); library(directlabels)
   # install.packages("systemfonts", "miniUI", "DT")
   if(!require(systemfonts)) install.packages(systemfonts); library(systemfonts)
   if(!require(miniUI)) install.packages("miniUI"); library(miniUI)
