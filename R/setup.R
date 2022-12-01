@@ -17,7 +17,12 @@ setup = function(){
   # remotes::install_github("Gedevan-Aleksizde/fontregisterer", repos = NULL, type = "source")
   if(!require(fontregisterer)) remotes::install_github("Gedevan-Aleksizde/fontregisterer", repos = NULL, type = "source"); library(fontregisterer)
   sans = fontregisterer::get_standard_ja_fonts()[1]
-  theme_set(theme(text = element_text(family = sans)))
+  theme_set(theme(text = element_text(family = sans),
+                  title = element_text(family = sans),
+                  legend.title = element_text(family = sans),
+                  legend.text = element_text(family = sans),
+                  axis.title = element_text(family = sans),
+                  axis.text = element_text(family = sans)))
   update_geom_defaults("text", list(family = sans))
   # theme_set(mytheme_bw(36)+theme(axis.title.x = element_text(family = "serif"),axis.title.y = element_text(family = "serif")))
 }
