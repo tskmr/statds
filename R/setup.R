@@ -1,4 +1,4 @@
-setup = function(is.setwd_here = TRUE, is.rm = TRUE){
+setup = function(is.setwd_here = FALSE, is.rm = TRUE){
   if(is.setwd_here) setwd_here(is.rm)
   if(!require(tidyverse)) install.packages("tidyverse"); library(tidyverse)
   if(!require(magrittr)) instatll.packages("magrittr"); library(magrittr)
