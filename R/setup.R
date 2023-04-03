@@ -1,5 +1,5 @@
-setup = function(){
-  # setwd(dirname(rstudioapi::getActiveDocumentContext()$path)); rm(list = ls())
+setup = function(is.setwd_here = TRUE, is.rm = TRUE){
+  if(is.setwd_here) setwd_here(is.rm)
   if(!require(tidyverse)) install.packages("tidyverse"); library(tidyverse)
   if(!require(magrittr)) instatll.packages("magrittr"); library(magrittr)
   if(!require(ggridges)) install.packages("ggridges"); library(ggridges)
